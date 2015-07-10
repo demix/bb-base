@@ -3811,8 +3811,8 @@
                 var a = $("#" + this.id), b = d, c = this._getShowMethod(b);
                 if ("init" == c || "normal" == c) this.hide(b), a.show(); else {
                     var e = c[0], f = c[1], g = f + (e ? "-in" : "-out"), h = $("#" + b);
-                    e ? (a.show(), setTimeout(function() {
-                        a.addClass("showing"), a.addClass(g), setTimeout(function() {
+                    e ? (a.show().addClass("showing"), setTimeout(function() {
+                        a.addClass(g), setTimeout(function() {
                             this.hide(b), a.removeClass(g).removeClass("showing");
                         }.bind(this), 400);
                     }.bind(this), 10)) : (h.addClass("hiding"), a.show(), h.addClass(g), setTimeout(function() {
