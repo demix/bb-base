@@ -76,9 +76,8 @@ module.exports = Backbone.View.extend({
 
             var oldTarget = $('#' + oldTargetId);
             if(isMovein){
-                newTarget.show();
+                newTarget.show().addClass('showing');
                 setTimeout(function(){
-                    newTarget.addClass('showing');                    
                     newTarget.addClass(className);
                     setTimeout(function(){
                         this.hide(oldTargetId);
