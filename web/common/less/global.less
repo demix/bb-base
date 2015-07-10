@@ -1,0 +1,176 @@
+
+/*
+部分浏览器直接读body的height有问题，构造一个容器
+*/
+ws{
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  visibility: hidden;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+a{
+    color:@fe-color;
+    text-decoration:none;
+}
+
+
+views, view, content{
+    display:block;
+    background:@bg-color;
+}
+
+views{
+    width: 100%;
+    overflow: hidden;
+    position:relative;
+}
+
+html{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    -webkit-tap-highlight-color:rgba(0, 0, 0, 0);
+}
+
+
+body{
+    font-family:"Helvetica Neue", "Helvetica", "Hiragino Sans GB", "WenQuanYi Micro Hei", Arial, sans-serif;
+    font-size:16px;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    background:@bg-color;
+    color:@fe-color;
+    -webkit-user-select:none;
+    -webkit-touch-callout: none;
+}
+
+img{
+    pointer-events: none;
+}
+
+views, views view, views content{
+    height: 100%;
+    overflow:hidden;
+}
+
+views view content{
+    position:relative;
+    overflow-x:hidden;
+    overflow-y:auto;
+    /*box-sizing:border-box;*/
+    -webkit-overflow-scrolling: touch;
+    height:100%;
+}
+
+views view.head-added content{
+    box-sizing: border-box;
+    padding-top: @header-height;
+}
+
+views view.foot-added content{
+    box-sizing: border-box;
+    padding-bottom: @footer-height;
+}
+
+view>header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    color:#fff;
+    height:@header-height;
+    line-height:@header-height;
+    box-sizing: border-box;
+    display:-webkit-box;
+    background:@highlight;
+    z-index:10000;
+    overflow:hidden;
+
+    &>*{
+        display:block;
+        text-align:center;
+        font-size:15px;
+    }
+
+    .title{
+        -webkit-box-flex:1;
+        font-size:17px;
+        font-weight:400;
+    }
+
+    .left-wrapper, .right-wrapper{
+        width:60px;
+        padding:0 4px;
+        position:relative;
+        height:100%;
+        button{
+            .custom-button;
+            display:block;
+            height:100%;
+            color:#fff;
+            font-size:15px;
+            width:100%;
+        }
+    }
+    .left-wrapper button{
+        text-indent:20px;
+    }
+    .right-wrapper{
+        width:70px;
+        padding-right:6px;
+        text-align: right;
+    }
+
+    .left:after{
+        content: '';
+        position:absolute;
+        width:11px;
+        height:18px;
+        background-position:0 0;
+        top:14px;
+        left:12px;
+    }
+    
+    a{
+        color:@highlight;
+    }
+
+    
+}
+
+
+view{
+    &.showing{
+        position:absolute;
+        top:0;
+        left: 100%;
+        width: 100%;
+        -webkit-transform: translate3d(0, 0, 0);
+        z-index: 100000;
+        box-shadow: 0 0 30px rgba(0,0,0, .6);
+    }
+    &.slide-in{
+        -webkit-transform: translate3d(-100%, 0, 0);
+        -webkit-transition: -webkit-transform ease-out .4s;
+    }
+
+    &.hiding{
+        position:absolute;
+        top:0;
+        left:0;
+        width: 100%;
+        -webkit-transform: translate3d(0, 0, 0);
+        z-index: 10000;
+        box-shadow: 0 0 30px rgba(0,0,0, .6);
+    }
+    &.slide-out{
+        -webkit-transform: translate3d(100%, 0, 0);
+        -webkit-transition: -webkit-transform ease-out .4s;
+    }
+}
