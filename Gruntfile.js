@@ -60,7 +60,7 @@ module.exports = function(grunt){
 
     grunt.registerTask('base' , ['delete-build', 'mk-build', 'copy:main', 'jshint:main']);
 
-    grunt.registerTask('default' , ['base', 'browserify:online' , 'less:online', 'cssmin:main',  'swig', 'uglify:main','ts:main' , 'clean:main']);
+    grunt.registerTask('default' , ['base', 'browserify:online' , 'less:online', 'cssmin:main',  'swig', 'uglify:main','ts:main', 'replace:main' , 'clean:main']);
 
 
 };

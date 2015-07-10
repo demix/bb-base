@@ -4,10 +4,13 @@
 
 var main = {
     src: [
-          './build/template/*.tpl'
+        './build/views/**/*.html',
+        './build/static/css/*.css',
+        './build/static/js/*.js'
 
-         ],
-    dest: './build/'
+    ],
+    dest: './build/',
+    base: '/bb-base'
 };
 
 

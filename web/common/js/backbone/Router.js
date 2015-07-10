@@ -9,7 +9,7 @@ var Router = Backbone.Router.extend({
     },
     getCurrentAction: function(){
         var currentRoute = this.routes[Backbone.history.getFragment()];
-        if(this._length == 0 ){
+        if(this._length === 0 ){
             return 'init';
         }
         if(this._length > oriLength){

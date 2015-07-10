@@ -18,21 +18,20 @@ module.exports = function(){
             done();
     };
 
+    if(!files.length){
+        done();
+        return;
+    }
+
     files.forEach(function(file){
+        console.log("Replace file " + file );
         var fcontent = fs.readFileSync(file).toString();
 
-        var reg = /{[%{].*?(\.length).*?[%}]}\n/,result;
-        while((result = reg.exec(fcontent))){
-            var sentence = fcontent.substring(result.index,reg.lastIndex);
-            console.log(sentence)
+        if(config.base){
+            fcontent = fcontent.replace(/src=['"]\/(.+?)['"]/g , 'src="'+ config.base +'/$1"');
+            fcontent = fcontent.replace(/<link (.*?)href=['"]\/(.+?)['"]/g , '<link $1href="'+ config.base +'/$2"');
+            fcontent = fcontent.replace(/url\(['"]?\/(.+?)['"]?\)/g , 'url\("'+ config.base +'/$1"\)');
         }
-        dones = 100;checkDone();return;
-
-        /*fcontent = fcontent.replace(/src=['"]\/(.+?)['"]/g , 'src="/templates/zz/$1"');
-        fcontent = fcontent.replace(/<link (.*?)href=['"]\/(.+?)['"]/g , '<link $1href="/templates/zz/$2"');
-        fcontent = fcontent.replace(/url\(['"]?\/(.+?)['"]?\)/g , 'url\("/templates/zz/$1"\)');
-        fcontent = fcontent.replace(/\/admin\/static\/cover\//g , '/templates/zz/admin/static/cover/');
-        */
 
         grunt.file.write( file, fcontent );
         checkDone();
