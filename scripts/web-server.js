@@ -5,6 +5,7 @@ var express = require('express');
 var path = require('path');
 var browserify = require('browserify');
 var stringify = require('stringify');
+var babelify = require('babelify');
 var less = require('less');
 var fs = require('fs');
 var watchify = require('watchify');
@@ -84,6 +85,7 @@ app.get(/^\/static\/js\/(.+?).js/, function(req, res) {
     },{
         debug: true
     }));
+    brs.transform(babelify, {presets: ["es2015"]})
     brs.transform(stringify(['.tpl', '.svg']));
     var w = watchify(brs);
 

@@ -2,6 +2,7 @@
 
 var browserify = require('browserify');
 var stringify = require('stringify');
+var babelify = require('babelify');
 var grunt = require('grunt');
 var path = require('path');
 var fs = require('fs');
@@ -37,6 +38,7 @@ module.exports = function(){
             entries:file
         },options));
         brs.transform(stringify(['.tpl', '.svg']));
+        brs.transform(babelify, {presets: ["es2015"]})
 
         brs.bundle( function(err, src){
             if( err ){

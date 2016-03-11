@@ -2,7 +2,7 @@
 
 
 
-var WorkSpace = bb.Router.extend({
+const WorkSpace = bb.Router.extend({
     routes: {
         "": "index",
         "list/": "list"
@@ -14,7 +14,7 @@ var WorkSpace = bb.Router.extend({
 
 
 
-var app = new WorkSpace();
+const app = new WorkSpace();
 bb.app = app;
 
 Backbone.history.start({
